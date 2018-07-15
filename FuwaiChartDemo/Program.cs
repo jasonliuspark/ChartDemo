@@ -16,7 +16,9 @@ namespace FuwaiChartDemo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CadiacUltrasoundChartDemoForm());
+            //Application.Run(new CadiacUltrasoundChartDemoForm());
+            Application.Run(new ChartForm());
+
         }
     }
 }

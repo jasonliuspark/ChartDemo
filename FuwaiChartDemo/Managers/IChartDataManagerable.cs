@@ -9,7 +9,7 @@ namespace FuwaiChartDemo
 {
     public interface IChartDataManagerable
     {
-        DataTable GetData(string accesionNum);
+        DataTable GetData(int patientID);
         
     }
 }
