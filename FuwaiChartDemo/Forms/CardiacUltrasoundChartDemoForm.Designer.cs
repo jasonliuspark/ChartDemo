@@ -29,53 +29,53 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.超声心动ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.超声心动图ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.心动超声配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.测量值选择ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UltrasoundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CardiacUltrasoundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CardiacConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MeasurementConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.超声心动ToolStripMenuItem,
-            this.心动超声配置ToolStripMenuItem});
+            this.UltrasoundToolStripMenuItem,
+            this.CardiacConfigToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(775, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 超声心动ToolStripMenuItem
+            // UltrasoundToolStripMenuItem
             // 
-            this.超声心动ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.超声心动图ToolStripMenuItem});
-            this.超声心动ToolStripMenuItem.Name = "超声心动ToolStripMenuItem";
-            this.超声心动ToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.超声心动ToolStripMenuItem.Text = "心动超声";
+            this.UltrasoundToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CardiacUltrasoundToolStripMenuItem});
+            this.UltrasoundToolStripMenuItem.Name = "UltrasoundToolStripMenuItem";
+            this.UltrasoundToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.UltrasoundToolStripMenuItem.Text = "心动超声";
             // 
-            // 超声心动图ToolStripMenuItem
+            // CardiacUltrasoundToolStripMenuItem
             // 
-            this.超声心动图ToolStripMenuItem.Name = "超声心动图ToolStripMenuItem";
-            this.超声心动图ToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.超声心动图ToolStripMenuItem.Text = "超声心动图测量趋势";
-            this.超声心动图ToolStripMenuItem.Click += new System.EventHandler(this.超声心动图ToolStripMenuItem_Click);
+            this.CardiacUltrasoundToolStripMenuItem.Name = "CardiacUltrasoundToolStripMenuItem";
+            this.CardiacUltrasoundToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.CardiacUltrasoundToolStripMenuItem.Text = "超声心动图测量趋势";
+            this.CardiacUltrasoundToolStripMenuItem.Click += new System.EventHandler(this.CardiacUltrasoundToolStripMenuItem_Click);
             // 
-            // 心动超声配置ToolStripMenuItem
+            // CardiacConfigToolStripMenuItem
             // 
-            this.心动超声配置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.测量值选择ToolStripMenuItem});
-            this.心动超声配置ToolStripMenuItem.Name = "心动超声配置ToolStripMenuItem";
-            this.心动超声配置ToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
-            this.心动超声配置ToolStripMenuItem.Text = "心动超声配置";
+            this.CardiacConfigToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MeasurementConfigToolStripMenuItem});
+            this.CardiacConfigToolStripMenuItem.Name = "CardiacConfigToolStripMenuItem";
+            this.CardiacConfigToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.CardiacConfigToolStripMenuItem.Text = "心动超声配置";
             // 
-            // 测量值选择ToolStripMenuItem
+            // MeasurementConfigToolStripMenuItem
             // 
-            this.测量值选择ToolStripMenuItem.Name = "测量值选择ToolStripMenuItem";
-            this.测量值选择ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.测量值选择ToolStripMenuItem.Text = "测量值选择";
-            this.测量值选择ToolStripMenuItem.Click += new System.EventHandler(this.测量值选择ToolStripMenuItem_Click);
+            this.MeasurementConfigToolStripMenuItem.Name = "MeasurementConfigToolStripMenuItem";
+            this.MeasurementConfigToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.MeasurementConfigToolStripMenuItem.Text = "测量值选择";
+            this.MeasurementConfigToolStripMenuItem.Click += new System.EventHandler(this.CalculationFigureToolStripMenuItem_Click);
             // 
             // CadiacUltrasoundChartDemoForm
             // 
@@ -95,10 +95,10 @@
 
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 超声心动ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 超声心动图ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 心动超声配置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 测量值选择ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UltrasoundToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CardiacUltrasoundToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CardiacConfigToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MeasurementConfigToolStripMenuItem;
     }
 }
 

@@ -17,12 +17,12 @@ namespace FuwaiChartDemo
             InitializeComponent();
         }
 
-        private void 超声心动图ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CardiacUltrasoundToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void 测量值选择ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CalculationFigureToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
