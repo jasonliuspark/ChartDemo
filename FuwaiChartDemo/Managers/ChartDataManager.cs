@@ -1,55 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FuwaiChartDemo
 {
-    public class ChartDataManager
+    public class ChartDataManager : IChartDataManagerable
     {
-
-        public ChartDataManager()
+        public List<Data> GetData(string PatientNumber)
         {
-
+            using (var db = new DataContext())
+            {
+                var query = from b in db.DataS where b.Content.Contains(PatientNumber) select b;
+                var data = query.ToList();
+                return data;
+            }
         }
-        public static DataTable GetData(int patientID)
+
+        public void PopulateDB()
         {
-            DataTable dt = new DataTable();
-            dt?.Dispose();
-            dt = new DataTable("Result");
-            DataColumn dc = new DataColumn("PatientID", typeof(int));
-            DataColumn dc1 = new DataColumn("AccessionNumber", typeof(string));
-            DataColumn dc2 = new DataColumn("SomeFigure", typeof(string));
-            DataColumn dc3 = new DataColumn("Date", typeof(DateTime));
-            dt.Columns.Add(dc);
-            dt.Columns.Add(dc1);
-            dt.Columns.Add(dc2);
-            dt.Columns.Add(dc3);
-            DataRow newRow;
-            newRow = dt.NewRow();
-            newRow["PatientID"] = 1;
-            newRow["AccessionNumber"] = "ct1";
-            newRow["SomeFigure"] = "2.0";
-            newRow["Date"] = Convert.ToDateTime("1991-3-15");
-            dt.Rows.Add(newRow);
-
-            newRow = dt.NewRow();
-            newRow["PatientID"] = 2;
-            newRow["AccessionNumber"] = "ct2";
-            newRow["SomeFigure"] = "3.0";
-            newRow["Date"] = Convert.ToDateTime("1992-3-15");
-            dt.Rows.Add(newRow);
-
-            newRow = dt.NewRow();
-            newRow["PatientID"] = 2;
-            newRow["AccessionNumber"] = "ct3";
-            newRow["SomeFigure"] = "4.0";
-            newRow["Date"] = Convert.ToDateTime("1993-3-15");
-            dt.Rows.Add(newRow);
-
-            return dt;
+            using (var db = new DataContext())
+            {
+                if (!db.Database.Exists())
+                {
+                    var data1 = new Data
+                    {
+                        ID = 1,
+                        Content =
+                            "{\"ReportManager.Conclusions\":\"未知\",\"ReportManager.Coincidences\":\"未知\",\"ReportManager.CriticalValues\":\"未知\",\"BasalDataManager.CriticalSituations\":null,\"StaffManager.ExaminationDoctors\":\"赵恨\",\"StaffManager.ReportDoctors\":\"赵恨\",\"StaffManager.Auditors\":\"\",\"StaffManager.CollaboratingDoctors\":\"\",\"StaffManager.Consultants\":\"\",\"StaffManager.Trainers\":\"\",\"StaffManager.Typists\":\"赵恨\",\"StaffManager.Anesthetizers\":\"赵恨\",\"StaffManager.Nurses1\":\"赵恨\",\"StaffManager.Nurses2\":\"赵恨\",\"StaffManager.Nurses3\":\"赵恨\",\"Patient.Name\":\"a\",\"Patient.Gender\":\"男\",\"Patient.Number\":\"PN00000007\",\"Patient.PhoneNumber\":\"\",\"Patient.Address\":\"\",\"Patient.ExternalId\":\"\",\"Patient.HisId\":\"\",\"Patient.Dob\":\"\",\"Patient.Nationality\":\"\",\"Patient.IdNumber\":\"\",\"Patient.SocialSecurityNumber\":\"\",\"Patient.Comment\":\"\",\"Order.Age\":\"\",\"Order.AgeUnit\":\"\",\"Order.AccessionNumber\":\"00000007\",\"Order.ApplicationDoctor\":\"\",\"Order.ApplicationDepartment\":\"\",\"Order.Source\":\"\",\"Order.PatientIdentity\":\"\",\"Order.ClinicalHistory\":\"\",\"Order.ClinicalSymptoms\":\"\",\"Order.ClinicalDiagnosis\":\"\",\"Order.Severity\":\"\",\"Order.ExaminationType\":\"心动超声\",\"Order.InpatientNumber\":\"\",\"Order.BedNumber\":\"\",\"Order.OutpatientNumber\":\"\",\"Order.AdviceType\":\"\",\"Order.CostCategory\":\"\",\"Order.ExaminationRoom\":\"超声一室\",\"Order.Examinations\":\"心脏彩超\",\"Order.RegisterTime\":\"2018/7/16 15:18:41\",\"Order.ExternalId\":\"\",\"Order.HisId\":\"\",\"Order.HisExamination\":\"\",\"Order.InfectiousDiseaseResult\":\"\",\"Order.HpTestResult\":\"\",\"Order.ScheduleTime\":\"\",\"Order.ExaminationDevice\":\"\",\"Order.Comment\":\"\",\"Order.EyeSide\":\"\",\"Order.Height\":\"\",\"Order.Weight\":\"\",\"Order.Sbp\":\"\",\"Order.Dbp\":\"\",\"Order.RegisterTime.TestDate\":\"2018/7/16 15:18:41\",\"OrderExtension.AgeDisplay\":\"\",\"OrderExtension.NameOfNumberDecidedByPatientSource\":\"\",\"OrderExtension.NumberDecidedByPatientSource\":\"\",\"OrderExtension.NameOfBedNumberDecidedByPatientSource\":\"\",\"OrderExtension.BedNumberDecidedByPatientSource\":\"\",\"OrderExtension.BodySurfaceArea\":\"\",\"ReportExtension.ExaminationDate.TestDate\":\"\",\"ReportExtension.ReportComment\":\"\",\"ReportExtension.Biopsy\":\"\",\"ReportExtension.LocalExaminationDevice\":\"\",\"Report.PathologyDiagnosis\":\"\",\"StaffManager.CustomizedStaffs\":\"赵恨\",\"ReportManager.ExaminationCategories\":\"Test\",\"SignatureBinaryStrs.ExamDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.ReportDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.AuditorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.CollaboratingDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.ConsultantSignBinaryStrs\":\"\",\"SignatureBinaryStrs.TrainerSignBinaryStrs\":\"\",\"SignatureBinaryStrs.TypistSignBinaryStrs\":\"\",\"SignatureBinaryStrs.AnesthetizerSignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse1SignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse2SignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse3SignBinaryStrs\":\"\",\"EcgExam.LaAP\":\"123\",\"EcgExam.LvDdAP\":\"123\",\"EcgExam.Ef\":\"12\",\"EcgExam.AvSv\":\"1.2\",\"EcgExam.TvDv\":\"0.2\",\"EcgExam.TvSv\":\"0.2\",\"EcgExam.MvDv\":\"0.3\",\"EcgExam.PvSv\":\"0.3\",\"ReportManager.AcousticalWindowConditions\":\"声窗条件：好\",\"ReportExtension.ExamDataUcg.1\":\"\",\"ReportExtension.ExamDataUcg.2\":\"前后径：123 mm\",\"ReportExtension.ExamDataUcg.3\":\"左右径：正常\",\"ReportExtension.ExamDataUcg.4\":\"舒张末径：123 mm||EF：12 %\",\"ReportExtension.ExamDataUcg.5\":\"TAPSE：正常\",\"_TextOutOfAreaAdjustment\":\"ReduceFontSize\"}",
+                        SubmissionTime = Convert.ToDateTime("2018 - 07 - 10 17:45:03.243")
+                    };
+                    var data2 = new Data
+                    {
+                        ID = 2,
+                        Content =
+                            "{\"ReportManager.Conclusions\":\"未知\",\"ReportManager.Coincidences\":\"未知\",\"ReportManager.CriticalValues\":\"未知\",\"BasalDataManager.CriticalSituations\":null,\"StaffManager.ExaminationDoctors\":\"赵恨\",\"StaffManager.ReportDoctors\":\"赵恨\",\"StaffManager.Auditors\":\"\",\"StaffManager.CollaboratingDoctors\":\"\",\"StaffManager.Consultants\":\"\",\"StaffManager.Trainers\":\"\",\"StaffManager.Typists\":\"赵恨\",\"StaffManager.Anesthetizers\":\"赵恨\",\"StaffManager.Nurses1\":\"赵恨\",\"StaffManager.Nurses2\":\"赵恨\",\"StaffManager.Nurses3\":\"赵恨\",\"Patient.Name\":\"a\",\"Patient.Gender\":\"男\",\"Patient.Number\":\"PN00000007\",\"Patient.PhoneNumber\":\"\",\"Patient.Address\":\"\",\"Patient.ExternalId\":\"\",\"Patient.HisId\":\"\",\"Patient.Dob\":\"\",\"Patient.Nationality\":\"\",\"Patient.IdNumber\":\"\",\"Patient.SocialSecurityNumber\":\"\",\"Patient.Comment\":\"\",\"Order.Age\":\"\",\"Order.AgeUnit\":\"\",\"Order.AccessionNumber\":\"00000007\",\"Order.ApplicationDoctor\":\"\",\"Order.ApplicationDepartment\":\"\",\"Order.Source\":\"\",\"Order.PatientIdentity\":\"\",\"Order.ClinicalHistory\":\"\",\"Order.ClinicalSymptoms\":\"\",\"Order.ClinicalDiagnosis\":\"\",\"Order.Severity\":\"\",\"Order.ExaminationType\":\"心动超声\",\"Order.InpatientNumber\":\"\",\"Order.BedNumber\":\"\",\"Order.OutpatientNumber\":\"\",\"Order.AdviceType\":\"\",\"Order.CostCategory\":\"\",\"Order.ExaminationRoom\":\"超声一室\",\"Order.Examinations\":\"心脏彩超\",\"Order.RegisterTime\":\"2018/7/16 15:18:41\",\"Order.ExternalId\":\"\",\"Order.HisId\":\"\",\"Order.HisExamination\":\"\",\"Order.InfectiousDiseaseResult\":\"\",\"Order.HpTestResult\":\"\",\"Order.ScheduleTime\":\"\",\"Order.ExaminationDevice\":\"\",\"Order.Comment\":\"\",\"Order.EyeSide\":\"\",\"Order.Height\":\"\",\"Order.Weight\":\"\",\"Order.Sbp\":\"\",\"Order.Dbp\":\"\",\"Order.RegisterTime.TestDate\":\"2018/7/16 15:18:41\",\"OrderExtension.AgeDisplay\":\"\",\"OrderExtension.NameOfNumberDecidedByPatientSource\":\"\",\"OrderExtension.NumberDecidedByPatientSource\":\"\",\"OrderExtension.NameOfBedNumberDecidedByPatientSource\":\"\",\"OrderExtension.BedNumberDecidedByPatientSource\":\"\",\"OrderExtension.BodySurfaceArea\":\"\",\"ReportExtension.ExaminationDate.TestDate\":\"\",\"ReportExtension.ReportComment\":\"\",\"ReportExtension.Biopsy\":\"\",\"ReportExtension.LocalExaminationDevice\":\"\",\"Report.PathologyDiagnosis\":\"\",\"StaffManager.CustomizedStaffs\":\"赵恨\",\"ReportManager.ExaminationCategories\":\"Test\",\"SignatureBinaryStrs.ExamDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.ReportDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.AuditorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.CollaboratingDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.ConsultantSignBinaryStrs\":\"\",\"SignatureBinaryStrs.TrainerSignBinaryStrs\":\"\",\"SignatureBinaryStrs.TypistSignBinaryStrs\":\"\",\"SignatureBinaryStrs.AnesthetizerSignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse1SignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse2SignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse3SignBinaryStrs\":\"\",\"EcgExam.LaAP\":\"123\",\"EcgExam.LvDdAP\":\"123\",\"EcgExam.Ef\":\"12\",\"EcgExam.AvSv\":\"1.2\",\"EcgExam.TvDv\":\"0.2\",\"EcgExam.TvSv\":\"0.2\",\"EcgExam.MvDv\":\"0.3\",\"EcgExam.PvSv\":\"0.3\",\"ReportManager.AcousticalWindowConditions\":\"声窗条件：好\",\"ReportExtension.ExamDataUcg.1\":\"\",\"ReportExtension.ExamDataUcg.2\":\"前后径：123 mm\",\"ReportExtension.ExamDataUcg.3\":\"左右径：正常\",\"ReportExtension.ExamDataUcg.4\":\"舒张末径：123 mm||EF：12 %\",\"ReportExtension.ExamDataUcg.5\":\"TAPSE：正常\",\"_TextOutOfAreaAdjustment\":\"ReduceFontSize\"}",
+                        SubmissionTime = Convert.ToDateTime("2018 - 07 - 10 17:45:03.243")
+                    };
+                    var data3 = new Data
+                    {
+                        ID = 3,
+                        Content =
+                            "{\"ReportManager.Conclusions\":\"未知\",\"ReportManager.Coincidences\":\"未知\",\"ReportManager.CriticalValues\":\"未知\",\"BasalDataManager.CriticalSituations\":null,\"StaffManager.ExaminationDoctors\":\"赵恨\",\"StaffManager.ReportDoctors\":\"赵恨\",\"StaffManager.Auditors\":\"\",\"StaffManager.CollaboratingDoctors\":\"\",\"StaffManager.Consultants\":\"\",\"StaffManager.Trainers\":\"\",\"StaffManager.Typists\":\"赵恨\",\"StaffManager.Anesthetizers\":\"赵恨\",\"StaffManager.Nurses1\":\"赵恨\",\"StaffManager.Nurses2\":\"赵恨\",\"StaffManager.Nurses3\":\"赵恨\",\"Patient.Name\":\"a\",\"Patient.Gender\":\"男\",\"Patient.Number\":\"PN00000007\",\"Patient.PhoneNumber\":\"\",\"Patient.Address\":\"\",\"Patient.ExternalId\":\"\",\"Patient.HisId\":\"\",\"Patient.Dob\":\"\",\"Patient.Nationality\":\"\",\"Patient.IdNumber\":\"\",\"Patient.SocialSecurityNumber\":\"\",\"Patient.Comment\":\"\",\"Order.Age\":\"\",\"Order.AgeUnit\":\"\",\"Order.AccessionNumber\":\"00000007\",\"Order.ApplicationDoctor\":\"\",\"Order.ApplicationDepartment\":\"\",\"Order.Source\":\"\",\"Order.PatientIdentity\":\"\",\"Order.ClinicalHistory\":\"\",\"Order.ClinicalSymptoms\":\"\",\"Order.ClinicalDiagnosis\":\"\",\"Order.Severity\":\"\",\"Order.ExaminationType\":\"心动超声\",\"Order.InpatientNumber\":\"\",\"Order.BedNumber\":\"\",\"Order.OutpatientNumber\":\"\",\"Order.AdviceType\":\"\",\"Order.CostCategory\":\"\",\"Order.ExaminationRoom\":\"超声一室\",\"Order.Examinations\":\"心脏彩超\",\"Order.RegisterTime\":\"2018/7/16 15:18:41\",\"Order.ExternalId\":\"\",\"Order.HisId\":\"\",\"Order.HisExamination\":\"\",\"Order.InfectiousDiseaseResult\":\"\",\"Order.HpTestResult\":\"\",\"Order.ScheduleTime\":\"\",\"Order.ExaminationDevice\":\"\",\"Order.Comment\":\"\",\"Order.EyeSide\":\"\",\"Order.Height\":\"\",\"Order.Weight\":\"\",\"Order.Sbp\":\"\",\"Order.Dbp\":\"\",\"Order.RegisterTime.TestDate\":\"2018/7/16 15:18:41\",\"OrderExtension.AgeDisplay\":\"\",\"OrderExtension.NameOfNumberDecidedByPatientSource\":\"\",\"OrderExtension.NumberDecidedByPatientSource\":\"\",\"OrderExtension.NameOfBedNumberDecidedByPatientSource\":\"\",\"OrderExtension.BedNumberDecidedByPatientSource\":\"\",\"OrderExtension.BodySurfaceArea\":\"\",\"ReportExtension.ExaminationDate.TestDate\":\"\",\"ReportExtension.ReportComment\":\"\",\"ReportExtension.Biopsy\":\"\",\"ReportExtension.LocalExaminationDevice\":\"\",\"Report.PathologyDiagnosis\":\"\",\"StaffManager.CustomizedStaffs\":\"赵恨\",\"ReportManager.ExaminationCategories\":\"Test\",\"SignatureBinaryStrs.ExamDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.ReportDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.AuditorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.CollaboratingDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.ConsultantSignBinaryStrs\":\"\",\"SignatureBinaryStrs.TrainerSignBinaryStrs\":\"\",\"SignatureBinaryStrs.TypistSignBinaryStrs\":\"\",\"SignatureBinaryStrs.AnesthetizerSignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse1SignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse2SignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse3SignBinaryStrs\":\"\",\"EcgExam.LaAP\":\"123\",\"EcgExam.LvDdAP\":\"123\",\"EcgExam.Ef\":\"12\",\"EcgExam.AvSv\":\"1.2\",\"EcgExam.TvDv\":\"0.2\",\"EcgExam.TvSv\":\"0.2\",\"EcgExam.MvDv\":\"0.3\",\"EcgExam.PvSv\":\"0.3\",\"ReportManager.AcousticalWindowConditions\":\"声窗条件：好\",\"ReportExtension.ExamDataUcg.1\":\"\",\"ReportExtension.ExamDataUcg.2\":\"前后径：123 mm\",\"ReportExtension.ExamDataUcg.3\":\"左右径：正常\",\"ReportExtension.ExamDataUcg.4\":\"舒张末径：123 mm||EF：12 %\",\"ReportExtension.ExamDataUcg.5\":\"TAPSE：正常\",\"_TextOutOfAreaAdjustment\":\"ReduceFontSize\"}",
+                        SubmissionTime = Convert.ToDateTime("2018 - 07 - 10 17:45:03.243")
+                    };
+                    var data4 = new Data
+                    {
+                        ID = 4,
+                        Content =
+                            "{\"ReportManager.Conclusions\":\"未知\",\"ReportManager.Coincidences\":\"未知\",\"ReportManager.CriticalValues\":\"未知\",\"BasalDataManager.CriticalSituations\":null,\"StaffManager.ExaminationDoctors\":\"赵恨\",\"StaffManager.ReportDoctors\":\"赵恨\",\"StaffManager.Auditors\":\"\",\"StaffManager.CollaboratingDoctors\":\"\",\"StaffManager.Consultants\":\"\",\"StaffManager.Trainers\":\"\",\"StaffManager.Typists\":\"赵恨\",\"StaffManager.Anesthetizers\":\"赵恨\",\"StaffManager.Nurses1\":\"赵恨\",\"StaffManager.Nurses2\":\"赵恨\",\"StaffManager.Nurses3\":\"赵恨\",\"Patient.Name\":\"a\",\"Patient.Gender\":\"男\",\"Patient.Number\":\"PN00000007\",\"Patient.PhoneNumber\":\"\",\"Patient.Address\":\"\",\"Patient.ExternalId\":\"\",\"Patient.HisId\":\"\",\"Patient.Dob\":\"\",\"Patient.Nationality\":\"\",\"Patient.IdNumber\":\"\",\"Patient.SocialSecurityNumber\":\"\",\"Patient.Comment\":\"\",\"Order.Age\":\"\",\"Order.AgeUnit\":\"\",\"Order.AccessionNumber\":\"00000007\",\"Order.ApplicationDoctor\":\"\",\"Order.ApplicationDepartment\":\"\",\"Order.Source\":\"\",\"Order.PatientIdentity\":\"\",\"Order.ClinicalHistory\":\"\",\"Order.ClinicalSymptoms\":\"\",\"Order.ClinicalDiagnosis\":\"\",\"Order.Severity\":\"\",\"Order.ExaminationType\":\"心动超声\",\"Order.InpatientNumber\":\"\",\"Order.BedNumber\":\"\",\"Order.OutpatientNumber\":\"\",\"Order.AdviceType\":\"\",\"Order.CostCategory\":\"\",\"Order.ExaminationRoom\":\"超声一室\",\"Order.Examinations\":\"心脏彩超\",\"Order.RegisterTime\":\"2018/7/16 15:18:41\",\"Order.ExternalId\":\"\",\"Order.HisId\":\"\",\"Order.HisExamination\":\"\",\"Order.InfectiousDiseaseResult\":\"\",\"Order.HpTestResult\":\"\",\"Order.ScheduleTime\":\"\",\"Order.ExaminationDevice\":\"\",\"Order.Comment\":\"\",\"Order.EyeSide\":\"\",\"Order.Height\":\"\",\"Order.Weight\":\"\",\"Order.Sbp\":\"\",\"Order.Dbp\":\"\",\"Order.RegisterTime.TestDate\":\"2018/7/16 15:18:41\",\"OrderExtension.AgeDisplay\":\"\",\"OrderExtension.NameOfNumberDecidedByPatientSource\":\"\",\"OrderExtension.NumberDecidedByPatientSource\":\"\",\"OrderExtension.NameOfBedNumberDecidedByPatientSource\":\"\",\"OrderExtension.BedNumberDecidedByPatientSource\":\"\",\"OrderExtension.BodySurfaceArea\":\"\",\"ReportExtension.ExaminationDate.TestDate\":\"\",\"ReportExtension.ReportComment\":\"\",\"ReportExtension.Biopsy\":\"\",\"ReportExtension.LocalExaminationDevice\":\"\",\"Report.PathologyDiagnosis\":\"\",\"StaffManager.CustomizedStaffs\":\"赵恨\",\"ReportManager.ExaminationCategories\":\"Test\",\"SignatureBinaryStrs.ExamDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.ReportDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.AuditorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.CollaboratingDoctorSignBinaryStrs\":\"\",\"SignatureBinaryStrs.ConsultantSignBinaryStrs\":\"\",\"SignatureBinaryStrs.TrainerSignBinaryStrs\":\"\",\"SignatureBinaryStrs.TypistSignBinaryStrs\":\"\",\"SignatureBinaryStrs.AnesthetizerSignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse1SignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse2SignBinaryStrs\":\"\",\"SignatureBinaryStrs.Nurse3SignBinaryStrs\":\"\",\"EcgExam.LaAP\":\"123\",\"EcgExam.LvDdAP\":\"123\",\"EcgExam.Ef\":\"12\",\"EcgExam.AvSv\":\"1.2\",\"EcgExam.TvDv\":\"0.2\",\"EcgExam.TvSv\":\"0.2\",\"EcgExam.MvDv\":\"0.3\",\"EcgExam.PvSv\":\"0.3\",\"ReportManager.AcousticalWindowConditions\":\"声窗条件：好\",\"ReportExtension.ExamDataUcg.1\":\"\",\"ReportExtension.ExamDataUcg.2\":\"前后径：123 mm\",\"ReportExtension.ExamDataUcg.3\":\"左右径：正常\",\"ReportExtension.ExamDataUcg.4\":\"舒张末径：123 mm||EF：12 %\",\"ReportExtension.ExamDataUcg.5\":\"TAPSE：正常\",\"_TextOutOfAreaAdjustment\":\"ReduceFontSize\"}",
+                        SubmissionTime = Convert.ToDateTime("2018 - 07 - 10 17:45:03.243")
+                    };
+                    db.DataS.Add(data1);
+                    db.DataS.Add(data2);
+                    db.DataS.Add(data3);
+                    db.DataS.Add(data4);
+                    db.SaveChanges();
+                }
+            }
         }
     }
 }

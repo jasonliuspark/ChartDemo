@@ -1,6 +1,6 @@
 ﻿namespace FuwaiChartDemo
 {
-    partial class CadiacUltrasoundChartDemoForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -58,7 +58,7 @@
             // CardiacUltrasoundToolStripMenuItem
             // 
             this.CardiacUltrasoundToolStripMenuItem.Name = "CardiacUltrasoundToolStripMenuItem";
-            this.CardiacUltrasoundToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.CardiacUltrasoundToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.CardiacUltrasoundToolStripMenuItem.Text = "超声心动图测量趋势";
             this.CardiacUltrasoundToolStripMenuItem.Click += new System.EventHandler(this.CardiacUltrasoundToolStripMenuItem_Click);
             // 
@@ -73,18 +73,18 @@
             // MeasurementConfigToolStripMenuItem
             // 
             this.MeasurementConfigToolStripMenuItem.Name = "MeasurementConfigToolStripMenuItem";
-            this.MeasurementConfigToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.MeasurementConfigToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.MeasurementConfigToolStripMenuItem.Text = "测量值选择";
             this.MeasurementConfigToolStripMenuItem.Click += new System.EventHandler(this.CalculationFigureToolStripMenuItem_Click);
             // 
-            // CadiacUltrasoundChartDemoForm
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 456);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "CadiacUltrasoundChartDemoForm";
+            this.Name = "MainForm";
             this.Text = "Cardiac";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

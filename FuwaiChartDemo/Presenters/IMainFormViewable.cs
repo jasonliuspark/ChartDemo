@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace FuwaiChartDemo
 {
-    class CardiacUltrasoundChartDemoFormPresenter
+    public interface IMainFormViewable
     {
+        //**not used for now
+         
+        //**not used for now
     }
 }

@@ -14,6 +14,7 @@ namespace FuwaiChartDemo
     {
         public ChartSettingDialog()
         {
+            _presenter = new ChartSettingDialogPresenter(this);
             InitializeComponent();
         }
 
@@ -22,6 +23,29 @@ namespace FuwaiChartDemo
         public void PopulateSelection(DataTable columTable)
         {
             throw new NotImplementedException();
+        }
+
+        public string keyword
+        {
+            get { return keyWordTextBox.Text; }
+            set { keyWordTextBox.Text = value; }
+        }
+        public string patientNum
+        {
+            get { return patientNumberTextBox1.Text; }
+            set { patientNumberTextBox1.Text = value; }
+        }
+
+        private void ChartSettingDialog_Load(object sender, EventArgs e)
+        {
+            _presenter.LoadSettings();
+        }
+
+        private readonly ChartSettingDialogPresenter _presenter;
+
+        private void ChartSettingDialog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _presenter.CloseSettings();
         }
     }
 }

@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.cardiacChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.cardiacChart)).BeginInit();
             this.SuspendLayout();
@@ -39,23 +37,17 @@
             // 
             chartArea1.Name = "ChartArea1";
             this.cardiacChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.cardiacChart.Legends.Add(legend1);
-            this.cardiacChart.Location = new System.Drawing.Point(73, 68);
+            this.cardiacChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cardiacChart.Location = new System.Drawing.Point(0, 0);
             this.cardiacChart.Name = "cardiacChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.cardiacChart.Series.Add(series1);
-            this.cardiacChart.Size = new System.Drawing.Size(553, 342);
+            this.cardiacChart.Size = new System.Drawing.Size(940, 572);
             this.cardiacChart.TabIndex = 0;
-            this.cardiacChart.Text = "chart1";
             // 
             // ChartForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 455);
+            this.ClientSize = new System.Drawing.Size(940, 572);
             this.Controls.Add(this.cardiacChart);
             this.Name = "ChartForm";
             this.Text = "ChartForm";

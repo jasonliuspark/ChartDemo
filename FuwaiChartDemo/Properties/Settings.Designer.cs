@@ -13,7 +13,7 @@ namespace FuwaiChartDemo.Properties
 
 
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
     {
 
@@ -25,6 +25,30 @@ namespace FuwaiChartDemo.Properties
             {
                 return defaultInstance;
             }
+        }
+
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("舒张末径")]
+        public string Keyword
+        {
+            get
+            {
+                return ((string)(this["Keyword"]));
+            }
+            set { this["Keyword"] = value; }
+        }
+
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("PN00000007")]
+        public string PatientNumber
+        {
+            get
+            {
+                return ((string)(this["PatientNumber"]));
+            }
+            set { this["PatientNumber"] = value; }
         }
     }
 }
